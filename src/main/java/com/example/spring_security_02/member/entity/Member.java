@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @Entity
+@Table(name = "member")
 public class Member {
 
     @Id
@@ -28,7 +29,7 @@ public class Member {
     @Column
     private String name;
 
-    @Column
+    @Column(name = "pwd")
     private String password;
 
     @Column
