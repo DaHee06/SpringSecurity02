@@ -21,9 +21,6 @@ public class Member {
     private Long id;
 
     @Column
-    private String loginId;
-
-    @Column
     private String role;
 
     @Column
