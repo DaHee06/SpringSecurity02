@@ -4,7 +4,6 @@ import com.example.spring_security_02.member.Repository.MemberRepository;
 import com.example.spring_security_02.member.entity.Member;
 import com.example.spring_security_02.security.auth.CustomUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +22,7 @@ public class MemberService {
      * @param member
      * 회원가입시 중복 여부를 확인 후 Member 엔티티와 User(Security)를 위한 엔티티에 저장한다.
      */
-    public void registerNewMember(Member member) {
+    public Member registerNewMember(Member member) {
         validateDuplicateMember(member);
 
         // Member 엔티티에 회원 정보 저장
@@ -40,6 +39,11 @@ public class MemberService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
+    /**
+     * 권한관리
+     */
+
 
 
 
