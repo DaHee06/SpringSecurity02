@@ -22,7 +22,7 @@ public class MemberService {
      * @param member
      * 회원가입시 중복 여부를 확인 후 Member 엔티티와 User(Security)를 위한 엔티티에 저장한다.
      */
-    public Member registerNewMember(Member member) {
+    public void registerNewMember(Member member) {
         validateDuplicateMember(member);
 
         // Member 엔티티에 회원 정보 저장

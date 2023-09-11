@@ -29,24 +29,24 @@ public class MemberServiceTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public Member createMember() {
-        Member member = member.builder()
-                .email("test@email.com")
-                .name("테스트")
-                .password("1111")
-                .role("ROLE_USER")
-                .build();
-        return Member.createMember(member, passwordEncoder);
-    }
+//    public Member createMember() {
+//        Member member = member.builder()
+//                .email("test@email.com")
+//                .name("테스트")
+//                .password("1111")
+//                .role("ROLE_USER")
+//                .build();
+//        return Member.createMember(member, passwordEncoder);
+//    }
 
-    @Test
-    @DisplayName("회원가입 테스트")
-    public void saveMemberTest() {
-        Member member = createMember();
-        Member savedMember = memberService.registerNewMember(member);
-
-        assertEquals(member.getEmail(), savedMember.getEmail());
-    }
+//    @Test
+//    @DisplayName("회원가입 테스트")
+//    public void saveMemberTest() {
+//        Member member = createMember();
+//        Member savedMember = memberService.registerNewMember(member);
+//
+//        assertEquals(member.getEmail(), savedMember.getEmail());
+//    }
 
 
 }

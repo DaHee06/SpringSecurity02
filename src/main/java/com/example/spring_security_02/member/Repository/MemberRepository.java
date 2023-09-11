@@ -9,17 +9,10 @@ import java.util.Optional;
 
 /**
  * 기능 구현
- * 1.회원가입
- * 2.로그인 / 아이디,비번 찾기
- * 3.권한 페이지 이동
- * 4.회원 탈퇴
+ * CRUD를 처리하기 위한 공통 메서드는 스프링 데이터 JPA가 제공하는 JpaRepository 인터페이스에 존재
  */
+
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-
-    Object save(Member member);
-    Optional<Member> findByEmail(String username);
-
-    List<Member> findAll();
-
+     Optional<Member> findByEmail(String Email);
 }
