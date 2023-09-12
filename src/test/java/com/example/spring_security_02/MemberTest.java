@@ -33,7 +33,18 @@ public class MemberTest {
         memberRepository.save(member);
 
         Assertions.assertEquals(member.getEmail(), "1234@naver.com");
-
-
     }
+
+    //MemberRepository - regist 테스트 진행 > validateDuplicateMember 메일 주소 중복 확인 테스트 완료
+    @Test
+    @DisplayName("save 테스트 진행")
+    public void saveRepositoryMemberTest(){
+        Member member = Member.builder().name("테스트").email("1234@naver.com").password("1234").role("USER").build();
+
+        memberService.registerNewMember(member);
+
+        Assertions.assertEquals(member.getEmail(), "1234@naver.com");
+    }
+
+
 }
