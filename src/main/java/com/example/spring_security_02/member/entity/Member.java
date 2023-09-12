@@ -23,7 +23,7 @@ public class Member {
     private Long id;
 
     @Column
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private String role;
 
     @Column
@@ -57,14 +57,5 @@ public class Member {
         this.role = role;
     }
 
-//    public static Member createMember(Member member, PasswordEncoder passwordEncoder) {
-//        Member member = Member.builder()
-//                .name(member.getName())
-//                .email(member.getEmail())
-//                .password(passwordEncoder.encode(member.getPassword()))  //암호화처리
-//                .role(MemberRole.USER)
-//                .build();
-//        return member;
-//    }
 
 }

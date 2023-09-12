@@ -23,8 +23,8 @@ public class MemberController {
             memberService.registerNewMember(member);
             return "ok";
         }catch(Exception e){
+            log.error("============================ 회원 가입 에러 : " + e.getMessage());
             return "fail";
-//            log.error("============================ 회원 가입 에러 : " + e.getMessage());
         }
     }
 

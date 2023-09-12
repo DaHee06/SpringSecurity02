@@ -10,6 +10,9 @@ spring:
   thymeleaf:
     cache: false
 
+#  main:
+#    web-application-type: none
+
   mvc:
     view:
       prefix: /WEB-INF/board/
@@ -17,19 +20,21 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
       properties:
         hibernate:
           #show_sql: true
           format_sql: true
+      ddl-auto: create-drop
+
 
   h2:
     console:
       enabled: true
 
-logging:
-  level:
-    org:
-      hibernate : INFO
-      springframework:
-        security : DEBUG
+#logging:
+#  level:
+#    org:
+#      hibernate :
+#        type : trace
+#      springframework:
+#        security : DEBUG
