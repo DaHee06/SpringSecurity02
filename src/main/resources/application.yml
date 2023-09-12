@@ -10,7 +10,12 @@ spring:
   thymeleaf:
     cache: false
 
-#  main:
+  security:
+    user:
+      name: user
+      password: 1234
+
+  #  main:
 #    web-application-type: none
 
   mvc:

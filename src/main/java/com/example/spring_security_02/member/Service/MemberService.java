@@ -28,8 +28,6 @@ public class MemberService {
      */
     public void registerNewMember(Member member) {
 
-        log.info("============================ MemberService 진행단계 테스트1 ");
-
         validateDuplicateMember(member);
 
         // Member 엔티티에 회원 정보 저장
@@ -39,18 +37,15 @@ public class MemberService {
             log.error("memberService 회원 가입 중 에러 발생 : " + e.getMessage());
         }
 
-        log.info("============================ MemberService 진행단계 테스트2 ");
-
         // UserDetailsService를 통해 사용자 정보를 로드
         UserDetails userDetails = userDetailsService.loadUserByUsername(member.getEmail());
         // userDetails 객체를 활용하여 추가 작업을 수행할 수 있음
 
-        log.info("============================ MemberService 진행단계 테스트3 ");
     }
 
     private void validateDuplicateMember(Member member) {
         Optional<Member> findMember = memberRepository.findByEmail(member.getEmail());
-        if (findMember != null) {
+        if (findMember.isPresent()) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
