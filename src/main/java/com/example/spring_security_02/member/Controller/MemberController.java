@@ -5,12 +5,19 @@ import com.example.spring_security_02.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @ResponseBody : 문자열 그대로 return , 안쓰면 페이지로 이동 -> 안썼을때 OK.jsp, OK.html
+ */
 @RequiredArgsConstructor
-@RestController("/member")
+@Controller
+@ResponseBody
+@RequestMapping("/member")
 public class MemberController {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
