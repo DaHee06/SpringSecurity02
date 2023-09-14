@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ public class MemberService {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final MemberRepository memberRepository;
-    private final CustomUserService userDetailsService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
      * @param member
@@ -31,14 +32,20 @@ public class MemberService {
         validateDuplicateMember(member);
 
         // Member 엔티티에 회원 정보 저장
+        // password Encoder 추가 --> 날짜 추가
         try {
-            memberRepository.save(member);
+            memberRepository.save(member.builder()
+                    .name(member.getName())
+                    .password(bCryptPasswordEncoder.encode(member.getPassword()))
+                    .email(member.getEmail())
+                    .role(member.getRole())
+                    .build()).getId();
         }catch(Exception e){
             log.error("memberService 회원 가입 중 에러 발생 : " + e.getMessage());
         }
 
         // UserDetailsService를 통해 사용자 정보를 로드
-        UserDetails userDetails = userDetailsService.loadUserByUsername(member.getEmail());
+//        UserDetails userDetails = userDetailsService.loadUserByUsername(member.getEmail());
         // userDetails 객체를 활용하여 추가 작업을 수행할 수 있음
 
     }
